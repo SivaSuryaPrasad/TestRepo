@@ -9,4 +9,4 @@ steps:
     defaultVersionType: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
 
-- powershell: echo $(downloadPath)
+- powershell: echo $(System.ArtifactsDirectory)
