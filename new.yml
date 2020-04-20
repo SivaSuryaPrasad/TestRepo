@@ -11,7 +11,6 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'gitTag'
-    releaseNotesFilePath: 'sample.ps1'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
 
