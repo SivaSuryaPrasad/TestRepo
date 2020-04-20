@@ -1,19 +1,19 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-trigger:
-- master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'vs2017-win2016'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+ 
+ - task: AzureResourceManagerTemplateDeployment@3
+   inputs:
+     deploymentScope: 'Resource Group'
+     azureResourceManagerConnection: 'Enterprise Dev/Test(41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b)'
+     subscriptionId: '41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b'
+     action: 'Create Or Update Resource Group'
+     resourceGroupName: '$(logicApp_RG_Name)'
+     location: '$(logicApp_LocationName)'
+     templateLocation: 'Linked artifact'
+     csmFile: 'LogicapptoCreateVM.json'
+     overrideParameters: '-keyvault_1_Connection_Name "$(keyvault_1_Connection_Name)" -keyvault_1_Connection_DisplayName "$(keyvault_1_Connection_DisplayName)" -keyvault_1_vaultName "$(keyvault_1_vaultName)" -azureautomation_1_Connection_Name "$(azureautomation_1_Connection_Name)" -azureautomation_1_Connection_DisplayName "$(azureautomation_1_Connection_DisplayName)" -visualstudioteamservices_1_Connection_Name "$(visualstudioteamservices_1_Connection_Name)" -visualstudioteamservices_1_Connection_DisplayName "$(visualstudioteamservices_1_Connection_DisplayName)" -LogicAppLocation "$(logicApp_LocationName)" -LogicAppName "$(logicApp_Name_Create)" -azureautomation_1_Account_Name "$(azureautomation_1_Account_Name)" -azureautomation_1_Runbook_Name_PipelineOutput "$(azureautomation_1_Runbook_Name_PipelineOutput)" -azureautomation_1_Runbook_Name_VariableUpdate "$(azureautomation_1_Runbook_Name_VariableUpdate)" -azureautomation_1_Account_RG_Name "$(azureautomation_1_Account_RG_Name)" -devops_Organization_Name "$(devops_Organization_Name)" -devops_Project_Name "$(devops_Project_Name)" -devops_WorkitemType_Name "$(devops_WorkitemType_Name_Create)" -devops_Project_Url "$(devops_Project_Url)" -devops_PipelineId "$(devops_PipelineId_Create)"'
+     deploymentMode: 'Incremental'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
