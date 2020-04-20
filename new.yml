@@ -4,10 +4,14 @@ pool:
 
 steps:
 
-- task: AzurePowerShell@5
+- task: GitHubRelease@1
   inputs:
-    azureSubscription: 'Enterprise Dev/Test(4)(41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b)'
-    ScriptType: 'InlineScript'
-    Inline: 'echo "venkatesh is great "'
-    azurePowerShellVersion: 'LatestVersion'
+    gitHubConnection: 'github.com_SivaSuryaPrasad'
+    repositoryName: 'SivaSuryaPrasad/TestRepo'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'gitTag'
+    releaseNotesFilePath: 'sample.ps1'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
 
