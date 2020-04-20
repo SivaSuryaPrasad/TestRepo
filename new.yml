@@ -3,14 +3,15 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
-
 - task: GitHubRelease@1
   inputs:
     gitHubConnection: 'github.com_SivaSuryaPrasad'
-    repositoryName: 'SivaSuryaPrasad/TestRepo'
+    repositoryName: '$(Build.Repository.Name)'
     action: 'create'
     target: '$(Build.SourceVersion)'
-    tagSource: 'gitTag'
+    tagSource: 'userSpecifiedTag'
+    tag: '$(master)'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
+
 
