@@ -3,15 +3,17 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
-- task: GitHubRelease@1
-  inputs:
-    gitHubConnection: 'github.com_SivaSuryaPrasad'
-    repositoryName: '$(Build.Repository.Name)'
-    action: 'create'
-    target: '$(Build.SourceVersion)'
-    tagSource: 'userSpecifiedTag'
-    tag: '$(master)'
-    changeLogCompareToRelease: 'lastFullRelease'
-    changeLogType: 'commitBased'
-
+ 
+ - task: AzureResourceManagerTemplateDeployment@3
+   inputs:
+     deploymentScope: 'Resource Group'
+     azureResourceManagerConnection: 'Enterprise Dev/Test(41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b)'
+     subscriptionId: '41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b'
+     action: 'Create Or Update Resource Group'
+     resourceGroupName: '$(logicApp_RG_Name)'
+     location: '$(logicApp_LocationName)'
+     templateLocation: 'Linked artifact'
+     csmFile: 'LogicapptoCreateVM.json'
+     overrideParameters: '-keyvault_1_Connection_Name "$(keyvault_1_Connection_Name)" -keyvault_1_Connection_DisplayName "$(keyvault_1_Connection_DisplayName)" -keyvault_1_vaultName "$(keyvault_1_vaultName)" -azureautomation_1_Connection_Name "$(azureautomation_1_Connection_Name)" -azureautomation_1_Connection_DisplayName "$(azureautomation_1_Connection_DisplayName)" -visualstudioteamservices_1_Connection_Name "$(visualstudioteamservices_1_Connection_Name)" -visualstudioteamservices_1_Connection_DisplayName "$(visualstudioteamservices_1_Connection_DisplayName)" -LogicAppLocation "$(logicApp_LocationName)" -LogicAppName "$(logicApp_Name_Create)" -azureautomation_1_Account_Name "$(azureautomation_1_Account_Name)" -azureautomation_1_Runbook_Name_PipelineOutput "$(azureautomation_1_Runbook_Name_PipelineOutput)" -azureautomation_1_Runbook_Name_VariableUpdate "$(azureautomation_1_Runbook_Name_VariableUpdate)" -azureautomation_1_Account_RG_Name "$(azureautomation_1_Account_RG_Name)" -devops_Organization_Name "$(devops_Organization_Name)" -devops_Project_Name "$(devops_Project_Name)" -devops_WorkitemType_Name "$(devops_WorkitemType_Name_Create)" -devops_Project_Url "$(devops_Project_Url)" -devops_PipelineId "$(devops_PipelineId_Create)"'
+     deploymentMode: 'Incremental'
 
