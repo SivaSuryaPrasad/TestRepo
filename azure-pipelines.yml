@@ -2,7 +2,6 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
- 
 - task: DownloadGitHubRelease@0
   inputs:
     connection: 'github.com_SivaSuryaPrasad'
@@ -10,9 +9,4 @@ steps:
     defaultVersionType: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
 
-resources:
-  repositories:
-  - repository: test
-    type: github
-    name: SivaSuryaPrasad/TestRepo
-    endpoint: github.com_SivaSuryaPrasad
+- powershell: echo $(downloadPath)
