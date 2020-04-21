@@ -16,8 +16,13 @@ steps:
       defaultVersionType: 'specificVersion'
       version: '25673815'
       downloadPath: '$(Build.SourcesDirectory)'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '$(Build.SourcesDirectory)/Artifacts/test.yml'
+jobs:
+- job: Windows
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - template: $(Build.SourcesDirectory)/Artifacts/test.yml  # Template reference
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'build'
+#     projects: '$(Build.SourcesDirectory)/Artifacts/test.yml'
