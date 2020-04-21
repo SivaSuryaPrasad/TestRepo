@@ -24,7 +24,6 @@
 #     command: 'build'
 #     projects: '$(Build.SourcesDirectory)/Artifacts/test.yml'
 resources:
-
   repositories:
   - repository: test
     type: github
