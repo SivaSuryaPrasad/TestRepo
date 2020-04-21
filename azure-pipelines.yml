@@ -18,7 +18,7 @@ steps:
     version: '25673815'
     downloadPath: '$(Build.SourcesDirectory)'
 
-- template: '$(Pipeline.Workspace)/s/Artifacts/test.yml'
+- template: '$(Build.SourcesDirectory)/s/Artifacts/test.yml'
 
 
 
