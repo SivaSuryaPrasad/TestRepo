@@ -16,9 +16,9 @@ steps:
       defaultVersionType: 'specificVersion'
       version: '25673815'
       downloadPath: '$(Build.SourcesDirectory)'
-variables:
-- name: $(Build.SourcesDirectory)/Artifacts/test.yml
-- template: variables.$(Build.SourcesDirectory)/Artifacts/test.yml
+# variables:
+# - name: $(Build.SourcesDirectory)/Artifacts/test.yml
+- template: Artifacts/test.yml
 # - task: DotNetCoreCLI@2
 #   inputs:
 #     command: 'build'
