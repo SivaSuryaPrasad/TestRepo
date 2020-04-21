@@ -17,7 +17,7 @@ steps:
       version: '25673815'
       downloadPath: '$(Build.SourcesDirectory)'
 
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'build'
-#     projects: '$(System.ArtifactsDirectory)/Artifacts/test.yml'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(Build.SourcesDirectory)/Artifacts/test.yml'
