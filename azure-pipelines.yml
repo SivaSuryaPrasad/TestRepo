@@ -28,6 +28,7 @@ resources:
   - repository: scripts # can be anything, is later used in the @ statement
     type: github # git = Azure DevOps / #github = GitHub
     name: SivaSuryaPrasad/TestRepo # ProjectName/RepoName
+    endpoint: ServiceConnection4 
 
 jobs:
 - job: Linux
