@@ -1,0 +1,13 @@
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: 'Create a New Lab and apply Policies'
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Enterprise Dev/Test (41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b)'
+    subscriptionId: '41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(DevtestlabResourceGroup)'
+    location: 'East US'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(Pipeline.Workspace)/s/*DtlWithPolicyAndVMCreation/*.json'
+    csmParametersFile: '$(Pipeline.Workspace)/s/*DtlWithPolicyAndVMCreation/*.json)'
+    deploymentMode: 'Incremental'
