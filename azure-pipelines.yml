@@ -29,9 +29,9 @@
 resources:
   repositories:
   - repository: scripts # can be anything, is later used in the @ statement
-    type: github
-    name: SivaSuryaPrasad/TestRepo 
-    endpoint: githubconnection2
+    type: 'github'
+    name: 'SivaSuryaPrasad/TestRepo' 
+    endpoint: 'githubconnection2'
 
 jobs:
 - job: windows
