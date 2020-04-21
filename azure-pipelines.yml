@@ -18,15 +18,13 @@ steps:
     version: '25673815'
     downloadPath: '$(Build.SourcesDirectory)'
 
-- template: '$(Pipeline.Workspace)/s/Artifacts/test.yaml'
-    
 
-# - task: AzurePowerShell@5
-#   inputs:
-#     azureSubscription: 'Enterprise Dev/Test(5)(41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b)'
-#     ScriptType: 'FilePath'
-#     ScriptPath: '$(Build.SourcesDirectory)/Artifacts/ChangeDrive.ps1'
-#     azurePowerShellVersion: 'LatestVersion'
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'Enterprise Dev/Test(5)(41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b)'
+    ScriptType: 'FilePath'
+    ScriptPath: '$(Build.SourcesDirectory)/Artifacts/test.yml'
+    azurePowerShellVersion: 'LatestVersion'
 
 
   
