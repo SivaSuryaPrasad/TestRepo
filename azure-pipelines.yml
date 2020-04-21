@@ -12,7 +12,7 @@ pool:
 steps:
 - task: DownloadGitHubRelease@0
   inputs:
-    connection: 'githubconnection2'
+    connection: 'githubconnection4'
     userRepository: 'SivaSuryaPrasad/TestRepo'
     defaultVersionType: 'specificVersion'
     version: '25673815'
