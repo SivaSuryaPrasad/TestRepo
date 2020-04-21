@@ -25,14 +25,14 @@
 #     projects: '$(Build.SourcesDirectory)/Artifacts/test.yml'
 resources:
   repositories:
-  - repository: scripts # can be anything, is later used in the @ statement
+  - repository: test # can be anything, is later used in the @ statement
     type: github # git = Azure DevOps / #github = GitHub
     name: SivaSuryaPrasad/TestRepo # ProjectName/RepoName
-    endpoint: ServiceConnection4 
+    endpoint: ServiceConnection4
 
 jobs:
 - job: Linux
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
-  - template: Artifacts/test.yml@scripts
+  - template: Artifacts/test.yml@test
