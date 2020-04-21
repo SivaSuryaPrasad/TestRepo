@@ -13,6 +13,7 @@ steps:
 - task: DownloadGitHubRelease@0
   inputs:
     connection: 'githubconnection2'
-    userRepository: 'SivaSuryaPrasad/TestRepo1'
-    defaultVersionType: 'latest'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    userRepository: 'SivaSuryaPrasad/TestRepo'
+    defaultVersionType: 'specificVersion'
+    version: '25673815'
+    downloadPath: '$(Build.SourcesDirectory)'
