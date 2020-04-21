@@ -18,7 +18,7 @@ steps:
     version: '25673815'
     downloadPath: '$(Build.SourcesDirectory)'
 
-- template: 'downloadPath/testing/test.yml'
+- template: '$(Pipeline.Workspace)/s/testing/test.yaml'
     
 
 # - task: AzurePowerShell@5
