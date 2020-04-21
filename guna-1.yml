@@ -12,5 +12,4 @@ resources:
       endpoint: 'serviceconnection4'
 
 steps:
-
   - template: 'testing/test.yml@templates'  # Template reference
