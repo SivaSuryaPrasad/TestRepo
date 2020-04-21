@@ -13,4 +13,4 @@ resources:
 
 steps:
 
-- template: 'testing/test.yml@templates'  # Template reference
+  - template: 'testing/test.yml@templates'  # Template reference
