@@ -18,6 +18,10 @@ steps:
     version: '25673815'
     downloadPath: '$(Build.SourcesDirectory)'
 
+- template: 
+
+
+
 
 
   
