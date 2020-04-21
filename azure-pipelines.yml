@@ -3,28 +3,38 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
+#trigger:
+#- master
 
-pool:
-  vmImage: 'vs2017-win2016'
+#pool:
+#  vmImage: 'vs2017-win2016'
 
-steps:
-- task: DownloadGitHubRelease@0
-  inputs:
-    connection: 'githubconnection2'
-    userRepository: 'SivaSuryaPrasad/TestRepo'
-    defaultVersionType: 'specificVersion'
-    version: '25673815'
-    downloadPath: '$(Build.SourcesDirectory)'
-    
+#steps:
+#- task: DownloadGitHubRelease@0
+#  inputs:
+#    connection: 'githubconnection2'
+#    userRepository: 'SivaSuryaPrasad/TestRepo'
+#    defaultVersionType: 'specificVersion'
+#    version: '25673815'
+#    downloadPath: '$(Build.SourcesDirectory)'
+#- template: '$(Build.SourcesDirectory)'
 
-- task: AzurePowerShell@5
-  inputs:
-    azureSubscription: 'Enterprise Dev/Test(5)(41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b)'
-    ScriptType: 'FilePath'
-    ScriptPath: '$(Build.SourcesDirectory)/Artifacts/ChangeDrive.ps1'
-    azurePowerShellVersion: 'LatestVersion'
+#- task: AzurePowerShell@5
+#  inputs:
+#    azureSubscription: 'Enterprise Dev/Test(5)(41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b)'
+#    ScriptType: 'FilePath'
+#    ScriptPath: '$(Build.SourcesDirectory)/Artifacts/ChangeDrive.ps1'
+#    azurePowerShellVersion: 'LatestVersion'
 
+resources:
+  repositories:
+  - repository: scripts # can be anything, is later used in the @ statement
+    type: github
+    name: SivaSuryaPrasad/TestRepo 
 
-  
+jobs:
+- job: windows
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - template: testing/test.yml@scripts
