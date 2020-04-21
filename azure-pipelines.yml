@@ -18,7 +18,7 @@ steps:
       downloadPath: '$(Build.SourcesDirectory)'
 # variables:
 # - name: $(Build.SourcesDirectory)/Artifacts/test.yml
-- template: /Artifacts/test.yml@$(Build.SourcesDirectory)
+- template: /Artifacts/test.yml@(Build.SourcesDirectory)
 # - task: DotNetCoreCLI@2
 #   inputs:
 #     command: 'build'
