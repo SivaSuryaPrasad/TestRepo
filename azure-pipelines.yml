@@ -18,4 +18,4 @@ steps:
     version: '25673815'
     downloadPath: '$(Build.SourcesDirectory)'
 
-- powershell: echo '$(Pipeline.Workspace)/s/*Artifactfile/*.json'
+- powershell: echo '$(Pipeline.Workspace)/s/*Artifacts/*.json'
