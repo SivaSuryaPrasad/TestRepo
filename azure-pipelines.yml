@@ -15,9 +15,9 @@ steps:
       userRepository: 'SivaSuryaPrasad/TestRepo'
       defaultVersionType: 'specificVersion'
       version: '25673815'
-      downloadPath: '$(System.ArtifactsDirectory)'
+      downloadPath: '$(Build.SourcesDirectory)'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '$(System.ArtifactsDirectory)/Artifacts/test.yml'
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'build'
+#     projects: '$(System.ArtifactsDirectory)/Artifacts/test.yml'
