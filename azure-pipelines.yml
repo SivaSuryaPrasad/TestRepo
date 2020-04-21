@@ -34,4 +34,4 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
-  - template: templates/test.yml@test
+  - template: Artifacts/test.yml@test
