@@ -3,19 +3,21 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-# trigger: none
+trigger: none
 
-# pool:
-#   vmImage: 'vs2017-win2016'
+pool:
+  vmImage: 'vs2017-win2016'
 
-# steps:
-# - task: DownloadGitHubRelease@0
-#   inputs:
-#       connection: 'ServiceConnection4'
-#       userRepository: 'SivaSuryaPrasad/TestRepo'
-#       defaultVersionType: 'specificVersion'
-#       version: '25673815'
-#       downloadPath: '$(Build.SourcesDirectory)'
+steps:
+- task: DownloadGitHubRelease@0
+  inputs:
+      connection: 'ServiceConnection4'
+      userRepository: 'SivaSuryaPrasad/TestRepo'
+      defaultVersionType: 'specificVersion'
+      version: '25673815'
+      downloadPath: '$(Build.SourcesDirectory)'
+- script: $(Build.SourcesDirectory)/Artifacts/test.yml
+
 # variables:
 # - name: $(Build.SourcesDirectory)/Artifacts/test.yml
 # - template: Artifacts/test.yml@SivaSuryaPrasad/TestRepo
@@ -23,15 +25,15 @@
 #   inputs:
 #     command: 'build'
 #     projects: '$(Build.SourcesDirectory)/Artifacts/test.yml'
-resources:
-  repositories:
-  - repository: test
-    type: github
-    name: SivaSuryaPrasad/TestRepo
-    endpoint: ServiceConnection4
-jobs:
-- job: Linux
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
-  - template: Artifacts/test.yml@test
+# resources:
+#   repositories:
+#   - repository: test
+#     type: github
+#     name: SivaSuryaPrasad/TestRepo
+#     endpoint: ServiceConnection4
+# jobs:
+# - job: Linux
+#   pool:
+#     vmImage: 'ubuntu-16.04'
+#   steps:
+#   - template: Artifacts/test.yml@test
