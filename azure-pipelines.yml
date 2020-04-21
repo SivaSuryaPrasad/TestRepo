@@ -3,23 +3,35 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger: none
+# trigger: none
 
-pool:
-  vmImage: 'vs2017-win2016'
+# pool:
+#   vmImage: 'vs2017-win2016'
 
-steps:
-- task: DownloadGitHubRelease@0
-  inputs:
-      connection: 'ServiceConnection4'
-      userRepository: 'SivaSuryaPrasad/TestRepo'
-      defaultVersionType: 'specificVersion'
-      version: '25673815'
-      downloadPath: '$(Build.SourcesDirectory)'
+# steps:
+# - task: DownloadGitHubRelease@0
+#   inputs:
+#       connection: 'ServiceConnection4'
+#       userRepository: 'SivaSuryaPrasad/TestRepo'
+#       defaultVersionType: 'specificVersion'
+#       version: '25673815'
+#       downloadPath: '$(Build.SourcesDirectory)'
 # variables:
 # - name: $(Build.SourcesDirectory)/Artifacts/test.yml
-- template: Artifacts/test.yml@SivaSuryaPrasad/TestRepo
+# - template: Artifacts/test.yml@SivaSuryaPrasad/TestRepo
 # - task: DotNetCoreCLI@2
 #   inputs:
 #     command: 'build'
 #     projects: '$(Build.SourcesDirectory)/Artifacts/test.yml'
+resources:
+  repositories:
+  - repository: scripts # can be anything, is later used in the @ statement
+    type: github # git = Azure DevOps / #github = GitHub
+    name: SivaSuryaPrasad/TestRepo # ProjectName/RepoName
+
+jobs:
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - template: Artifacts/test.yml@scripts
