@@ -17,3 +17,6 @@ steps:
     defaultVersionType: 'specificVersion'
     version: '25673815'
     downloadPath: '$(Build.SourcesDirectory)'
+  enabled: false
+  
+- powershell: echo '$(Pipeline.Workspace)/s/*Artifactfile/*.json'
