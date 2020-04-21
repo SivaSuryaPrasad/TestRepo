@@ -17,8 +17,10 @@ steps:
     defaultVersionType: 'specificVersion'
     version: '25673815'
     downloadPath: '$(Build.SourcesDirectory)'
+- template: $(Build.SourcesDirectory)/s/Artifacts/test.yml'
 
-- template: '$(Build.SourcesDirectory)/s/Artifacts/test.yml'
+# - template: '$(Build.SourcesDirectory)/s/Artifacts/test.yml'
+  
 
 
 
