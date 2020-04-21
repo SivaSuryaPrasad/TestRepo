@@ -18,7 +18,7 @@ steps:
     version: '25673815'
     downloadPath: '$(Build.SourcesDirectory)'
 
-- template: 
+- template: '$(Build.SourcesDirectory)/Artifacts/test.yml'
 
 
 
