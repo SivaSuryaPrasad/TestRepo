@@ -29,5 +29,9 @@ resources:
     type: github
     name: SivaSuryaPrasad/TestRepo
     endpoint: ServiceConnection4
-extends:
-  template: Artifacts/test.yml@test
+jobs:
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - template: templates/Artifacts/test.yml@test
