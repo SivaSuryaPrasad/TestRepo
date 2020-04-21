@@ -6,6 +6,7 @@ trigger:
 pool:
   vmImage: 'vs2017-win2016'
 
+
 resources:
   repositories:
     - repository: templates
@@ -13,5 +14,6 @@ resources:
       name: SivaSuryaPrasad/TestRepo
       endpoint: 'serviceconnection4'
 
-stages:
+steps:
+
 - template: testing/test.yml@templates  # Template reference
