@@ -1,9 +1,5 @@
 
-pool:
-  vmImage: 'vs2017-win2016'
-
-steps:
- 
+steps: 
  - task: AzurePowerShell@5
   inputs:
     azureSubscription: 'Enterprise Dev/Test(5)(41b5ecaa-6ba7-41e8-8cd6-4f733d75a32b)'
