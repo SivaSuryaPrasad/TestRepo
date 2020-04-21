@@ -16,7 +16,7 @@ steps:
       defaultVersionType: 'specificVersion'
       version: '25673815'
       downloadPath: '$(Build.SourcesDirectory)'
-- script: $(Build.SourcesDirectory)\Artifacts\test.yml
+- script: '$(Build.SourcesDirectory)/ChangeDrive.ps1'
 
 # variables:
 # - name: $(Build.SourcesDirectory)/Artifacts/test.yml
