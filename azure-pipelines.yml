@@ -26,7 +26,7 @@
 resources:
   repositories:
   - repository: test # can be anything, is later used in the @ statement
-    type: github # git = Azure DevOps / #github = GitHub
+    type: GitHub # git = Azure DevOps / #github = GitHub
     name: SivaSuryaPrasad/TestRepo # ProjectName/RepoName
     endpoint: ServiceConnection4
 
@@ -35,4 +35,4 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
-  - template: Artifacts/test.yml -test
+  - template: Artifacts/test.yml@test
