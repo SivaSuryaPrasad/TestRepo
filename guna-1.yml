@@ -6,11 +6,11 @@ trigger:
 
 resources:
   repositories:
-    - repository: templates
-      type: github
-      name: SivaSuryaPrasad/TestRepo
+    - repository: 'templates'
+      type: 'github'
+      name: 'SivaSuryaPrasad/TestRepo'
       endpoint: 'serviceconnection4'
 
 steps:
 
-- template: testing/test.yml@templates  # Template reference
+- template: 'testing/test.yml@templates'  # Template reference
