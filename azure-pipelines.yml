@@ -30,4 +30,5 @@ resources:
     name: SivaSuryaPrasad/TestRepo # ProjectName/RepoName
     endpoint: ServiceConnection4
 jobs:
+steps:
 - template: Artifacts/test.yml@test
