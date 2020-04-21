@@ -3,8 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
+trigger: none
 
 pool:
   vmImage: 'vs2017-win2016'
@@ -12,18 +11,13 @@ pool:
 steps:
 - task: DownloadGitHubRelease@0
   inputs:
-    connection: 'ServiceConnection4'
-    userRepository: 'SivaSuryaPrasad/TestRepo'
-    defaultVersionType: 'specificVersion'
-    version: '25673815'
-    downloadPath: '$(Build.SourcesDirectory)'
-- template: $(Build.SourcesDirectory)/s/Artifacts/test.yml'
+      connection: 'ServiceConnection4'
+      userRepository: 'SivaSuryaPrasad/TestRepo'
+      defaultVersionType: 'specificVersion'
+      version: '25673815'
+      downloadPath: '$(System.ArtifactsDirectory)'
 
-# - template: '$(Build.SourcesDirectory)/s/Artifacts/test.yml'
-  
-
-
-
-
-
-  
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(System.ArtifactsDirectory)/Artifacts/test.yml'
