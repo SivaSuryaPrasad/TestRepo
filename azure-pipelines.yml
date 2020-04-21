@@ -29,6 +29,5 @@ resources:
     type: GitHub # git = Azure DevOps / #github = GitHub
     name: SivaSuryaPrasad/TestRepo # ProjectName/RepoName
     endpoint: ServiceConnection4
-jobs:
 steps:
 - template: Artifacts/test.yml@test
